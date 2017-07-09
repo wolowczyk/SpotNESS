@@ -5,3 +5,4 @@ from django.contrib.auth.models import AbstractUser
 class SpotUser(AbstractUser):
     username = models.CharField(max_length=27, unique=True)
     email = models.EmailField(unique=True)
+    localization = models.CharField(max_length=27)

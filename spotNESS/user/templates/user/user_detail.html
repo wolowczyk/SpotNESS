@@ -1,0 +1,13 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+
+<h2>Punkty {{ user.username }}:</h2>
+<ul>
+    {% for point in point_list %}
+    <p><a href="/ppoint/{{ point.id }}/">{{ point.name }}</a><br />
+        <strong>{{ point.user.username }}</strong> ~ {{ point.description }}<br />
+    {% endfor %}
+</ul>
+
+{% endblock %}
