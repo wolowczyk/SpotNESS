@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'comment',
     'point',
     'user',
+    'tag',
 ]
 
 MIDDLEWARE = [
