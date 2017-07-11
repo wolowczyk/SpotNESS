@@ -1,9 +1,9 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic.edit import CreateView
 from django.contrib.auth import login, logout
-# from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from point.models import Point
 from user.models import SpotUser
 from .forms import UserLoginForm, UserCreateForm
@@ -48,7 +48,7 @@ class SpotNESSView(View):
         return render(request, 'user/spotness.html', ctx)
 
 
-class UserView(View):
+class UserView(LoginRequiredMixin, View):
     def get(self, request, id):
         user = SpotUser.objects.get(id=id)
         point_list = Point.objects.filter(user=user)

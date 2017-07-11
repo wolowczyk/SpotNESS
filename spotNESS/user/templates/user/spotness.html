@@ -1,12 +1,17 @@
 {% extends 'user/base.html' %}
 
 {% block content %}
-<h2>Wszystkie punkty:</h2>
-<ul>
+{% if request.user.is_authenticated %}
+    <h2>Wszystkie punkty:</h2>
+    <ul>
     {% for point in point_list %}
-    <p><a href="/point/{{ point.id }}/">{{ point.name }}</a><br />
+        <p><a href="/point/{{ point.id }}/">{{ point.name }}</a><br />
         <strong>{{ point.user.username }}</strong> ~ {{ point.description }}<br />
         {{ point.type.1 }}, {{ point.location }}</p><br />
     {% endfor %}
+{% else %}
+    <p>To see more, you must be a registered user.</p>
+{% endif %}
 </ul>
+
 {% endblock %}

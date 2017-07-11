@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView
 from .models import Point
@@ -7,14 +8,14 @@ from django.views import View
 from point.forms import PointAddForm
 
 
-class PointDetailView(View):
+class PointDetailView(LoginRequiredMixin, View):
     def get(self, request, id):
         point = Point.objects.get(id=id)
         # form = CommentForm(initial={'photo': id})
         return render(request, 'point/point.html', {'point': point})
 
 
-class PointAddView(View):
+class PointAddView(LoginRequiredMixin, View):
     def get(self, request):
         form = PointAddForm()
         return render(request, 'point/point_form.html', {'form': form})
