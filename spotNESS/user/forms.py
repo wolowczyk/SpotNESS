@@ -5,7 +5,7 @@ from .models import SpotUser
 
 
 class UserLoginForm(forms.Form):
-    email = forms.EmailField()
+    username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
     def clean(self):

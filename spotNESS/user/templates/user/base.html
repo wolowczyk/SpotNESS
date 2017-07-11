@@ -12,10 +12,10 @@
 <footer>
  {% if request.user.is_authenticated %}
         <a href="/logout">LOGOUT {{ request.user.username }}</a><br />
-        <a href="/add_photo">ADD YOUR POINT</a>
+        <a href="/add_point/">ADD YOUR POINT</a>
     {% else %}
         <a href="/login">LOGIN</a><br />
-        <a href="/add_user">REGISTER</a><br />
+        <a href="/registration">REGISTER</a><br />
     {% endif %}
 </footer>
 </html>

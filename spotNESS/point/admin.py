@@ -1,3 +1,7 @@
 from django.contrib import admin
+from point.models import Point
 
-# Register your models here.
+
+@admin.register(Point)
+class PointAdmin(admin.ModelAdmin):
+    list_display = ['name', 'location', 'type', 'added']

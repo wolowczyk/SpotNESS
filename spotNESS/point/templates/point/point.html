@@ -1,0 +1,8 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+<img width=500px src="{{ MEDIA_URL }}{{ point.photo }}"/><br />
+<strong>{{ point.user.username }}</strong> ~ {{ point.description }}<br /><br />
+<a href="{{ point.get_delete_url }}">DELETE</a>
+
+{% endblock %}

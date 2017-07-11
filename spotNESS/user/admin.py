@@ -1,3 +1,7 @@
 from django.contrib import admin
+from user.models import SpotUser
 
-# Register your models here.
+
+@admin.register(SpotUser)
+class SpotUserAdmin(admin.ModelAdmin):
+    list_display = ['username', 'email', 'localization']

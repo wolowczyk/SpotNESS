@@ -14,10 +14,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Tag',
+            name='SpotType',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.CharField(max_length=27)),
+                ('name', models.CharField(max_length=27)),
+                ('is_active', models.BooleanField(default=True)),
             ],
         ),
     ]
