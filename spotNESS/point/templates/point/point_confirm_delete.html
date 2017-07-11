@@ -1,8 +1,8 @@
 {% extends 'user/base.html' %}
-+
-+{% block content %}
-+    You would like to delete {{ point }}:
-+    <form action="" method="POST">{% csrf_token %}
-+        <button type="submit">DELETE</button>
-+    </form>
-+{% endblock %}
+
+{% block content %}
+    You would like to delete {{ point }}:
+    <form action="" method="POST">{% csrf_token %}
+        <button type="submit">DELETE</button>
+    </form>
+{% endblock %}

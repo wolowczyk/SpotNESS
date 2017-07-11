@@ -24,7 +24,7 @@ class PointAddView(LoginRequiredMixin, View):
         form = PointAddForm(request.POST, request.FILES)
         if form.is_valid():
             form.save(request)
-            return redirect('/spotness/')
+            return redirect('/spotness')
         else:
             form = PointAddForm()
         return render(request, 'point/point_form.html', {'form': form})
