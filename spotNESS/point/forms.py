@@ -11,6 +11,10 @@ class PointAddForm(ModelForm):
         model = Point
         fields = ['name', 'description', 'location', 'type', 'was_there', 'photo', 'tags']
 
+    # def __init__(self, *args, **kwargs):
+    #     super(PointAddForm, self).__init__(*args, **kwargs)
+    #     self.fields['location'].widget.attrs.update['class'] = 'location'
+
     def save(self, commit=True):
         point = super().save(commit)
         point.tags_set.set(self.cleaned_data['tags'])

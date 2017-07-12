@@ -1,14 +1,12 @@
 {% extends 'user/base.html' %}
 
 {% block content %}
+<script src="/static/user/spotness.js"></script>
 {% if request.user.is_authenticated %}
     <h3>Main Map</h3>
-    <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
-    </script>
-    <h2>All spots nearby you:</h2>
-    <input type="hidden" id="myVar" name="variable" value="['52.0977181', '19.0258159']">
-    <h3>Position: {{ request.user.get_position }} value="{lat: 52.0977181, lng: 19.0258159}"</h3>
+    <h2>All spots:</h2>
+    <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
+    </script></div>
     <ul>
     {% for point in point_list %}
         <p><a href="/point/{{ point.id }}/">{{ point.name }}</a><br />
