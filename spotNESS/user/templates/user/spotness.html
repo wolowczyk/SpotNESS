@@ -2,7 +2,12 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
-    <h2>Wszystkie punkty:</h2>
+    <h3>Main Map</h3>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
+    </script>
+    <h2>All spots nearby you:</h2>
+    <h3>Position: {{ user.get_position() }}</h3>
     <ul>
     {% for point in point_list %}
         <p><a href="/point/{{ point.id }}/">{{ point.name }}</a><br />
