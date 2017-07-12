@@ -7,7 +7,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
     </script>
     <h2>All spots nearby you:</h2>
-    <h3>Position: {{ user.get_position() }}</h3>
+    <input type="hidden" id="myVar" name="variable" value="['52.0977181', '19.0258159']">
+    <h3>Position: {{ request.user.get_position }} value="{lat: 52.0977181, lng: 19.0258159}"</h3>
     <ul>
     {% for point in point_list %}
         <p><a href="/point/{{ point.id }}/">{{ point.name }}</a><br />

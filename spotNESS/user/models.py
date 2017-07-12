@@ -8,8 +8,10 @@ class SpotUser(AbstractUser):
     email = models.EmailField(unique=True)
     localization = models.CharField(max_length=27)
 
-    @classmethod
-    def get_position(cls, localization):
+    @property
+    def get_position(self):
         geolocator = Nominatim()
+        localization = self.localization
         position = geolocator.geocode(localization)
-        return '{lat: {lat}, lng: {lng}'.format(lat=position.latitude, lng=position.longitude)
+        result = '[{lat}, {lng}]'.format(lat=position.latitude, lng=position.longitude)
+        return result
