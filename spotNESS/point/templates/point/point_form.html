@@ -3,8 +3,7 @@
 
 {% block content %}
     <script src='{% static "/point/point_form.js" %}'></script>
-    <h2>Add your point:</h2>
-    <p><i>Find your fav spot and click right, to add a marker! Then add some details and save :)</i></p>
+    <div class="instruction center_div"><h3><i>Find your fav spot and click right, to add a marker! Then add some details and save :)</i></h3></div>
     <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
     </script></div>
     <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}

@@ -1,8 +1,38 @@
 #map {
-    height: 400px;
+    height: 500px;
     width: 100%;
 }
 
-body {
-    background-color: yellow;
+.sticky {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-top: 0;
+}
+
+.jumbotron {
+    margin-top: 80px;
+}
+
+.center_div {
+    margin: auto;
+    width:50%;
+    text-align: center;
+}
+
+.form_form {
+    padding: 20px;
+}
+
+.instruction {
+    margin-top: 50px;
+    width: 100%;
+    padding: 10px;
+    text-align: centre;
+}
+
+.submit{
+    border: 1px solid white;
 }

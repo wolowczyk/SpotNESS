@@ -1,8 +1,10 @@
 {% extends 'user/base.html' %}
 
 {% block content%}
-    <form action="" method="POST">{% csrf_token %}
+<div class="jumbotron"><div class="container center_div">
+    <form class ="form_form" action="" method="POST">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Register"/>
+    <input type="submit" class="btn btn-info btn-lg" value="Register"/>
     </form>
+</div></div>
 {% endblock %}

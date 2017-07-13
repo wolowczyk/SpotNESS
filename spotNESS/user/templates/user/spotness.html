@@ -1,4 +1,5 @@
 {% extends 'user/base.html' %}
+{% load static %}
 
 {% block content %}
 <script>
@@ -37,12 +38,17 @@ var marker = new google.maps.Marker({
 }
 </script>
 {% if request.user.is_authenticated %}
-    <h3>Main Map</h3>
-    <h2>All spots:</h2>
+    <div class="instruction center_div"><h3><i>Feel free to explore the world. Turn on geolocation to find some recommendations nearby you.</i></h3></div>
     <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
     </script></div><br />
-    <a href="/point/{{ random_id }}">GO RANDOM!!!</a>
+<a href="/point/{{ random_id }}">
+    <img src="/media/media/random.jpg" class="img-responsive center-block" width=20% height=20%>
+</a>
 {% else %}
-    <p>To see more, you must be a registered user.</p>
+<div class="jumbotron">
+<a href="/registration/">
+    <img src="/media/media/loginorregister.jpg" class="img-responsive center-block" width=65% height=65%>
+</a>
+</div>
 {% endif %}
 {% endblock %}
