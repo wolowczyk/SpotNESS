@@ -42,8 +42,14 @@ class UserCreateView(CreateView):
 class SpotNESSView(View):
     def get(self, request):
         point_list = Point.objects.all()
+        spots_list = []
+        for point in point_list:
+            url = "/point/" + str(point.id)
+            spots_list.append([point.name, point.lat, point.lng, url])
+
         ctx = {
-            'point_list': point_list
+            'point_list': point_list,
+            'spots_list': spots_list
         }
         return render(request, 'user/spotness.html', ctx)
 

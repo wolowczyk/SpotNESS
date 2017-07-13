@@ -2,8 +2,27 @@
 {% load static %}
 
 {% block content %}
+<script>
+    function initMap() {
+var pos = {
+          lat: {{ point.lat }},
+          lng: {{ point.lng }}
+        };
+var map = new google.maps.Map(document.getElementById('map'), {
+  center: pos,
+  zoom: 15
+});
+var marker = new google.maps.Marker({
+  position: pos,
+  map: map
+});
+}
+</script>
+<h1>{{ point.name }}</h1>
+<div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
+    </script></div>
 <img src="/media/{{ point.photo }}"><br />
-<strong>{{ point.user.username }}</strong> ~ {{ point.description }}<br /><br />
+<strong>{{ point.user.username }}</strong> ~ {{ point.description }}<br />{{ point.location }}<br />
 <a href="{{ point.get_delete_url }}">DELETE</a>
 
 {% endblock %}

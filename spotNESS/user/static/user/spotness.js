@@ -18,4 +18,12 @@ var map = new google.maps.Map(document.getElementById('map'), {
     } else {
       handleLocationError(false, infoWindow, map.getCenter());
     }
+
+var spots = {{ spots_list | safe}}
+for ( i = 0; i < spots.length; i++ ) {
+var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(spots[i][1], spots[i][2]),
+    map: map
+  });
+  }
 }

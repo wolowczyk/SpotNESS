@@ -8,7 +8,8 @@ from type.models import SpotType
 
 class Point(models.Model):
     name = models.CharField(max_length=27)
-    location = models.CharField(max_length=243)
+    lat = models.CharField(max_length=81)
+    lng = models.CharField(max_length=81)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='points')
     description = models.TextField(null=True)
     type = models.ForeignKey(SpotType)

@@ -1,20 +1,47 @@
 {% extends 'user/base.html' %}
 
 {% block content %}
-<script src="/static/user/spotness.js"></script>
+<script>
+function initMap() {
+var map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: 43.577626, lng: 13.105803},
+  zoom: 3
+});
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        map.setCenter(pos);
+        map.setZoom(11);
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+var spots = {{ spots_list | safe }};
+
+for ( i = 0; i < spots.length; i++ ) {
+var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(spots[i][1], spots[i][2]),
+    map: map,
+    url: spots[i][3],
+  });
+  google.maps.event.addListener(marker, 'click', function() {
+    window.location.href = this.url;
+});
+  }
+}
+</script>
 {% if request.user.is_authenticated %}
     <h3>Main Map</h3>
     <h2>All spots:</h2>
     <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
-    </script></div>
-    <ul>
-    {% for point in point_list %}
-        <p><a href="/point/{{ point.id }}/">{{ point.name }}</a><br />
-        <strong>{{ point.user.username }}</strong> ~ {{ point.description }}<br />
-        {{ point.type.1 }}, {{ point.location }}</p><br />
-    {% endfor %}
+    </script></div><br />
 {% else %}
     <p>To see more, you must be a registered user.</p>
 {% endif %}
-</ul>
 {% endblock %}

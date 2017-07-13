@@ -9,7 +9,7 @@ class PointAddForm(ModelForm):
 
     class Meta:
         model = Point
-        fields = ['name', 'description', 'location', 'type', 'was_there', 'photo', 'tags']
+        fields = ['name', 'description', 'lat', 'lng', 'type', 'was_there', 'photo', 'tags']
 
     # def __init__(self, *args, **kwargs):
     #     super(PointAddForm, self).__init__(*args, **kwargs)

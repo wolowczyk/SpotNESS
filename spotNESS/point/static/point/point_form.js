@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('id_location').parentNode.style.display = 'none';
+    document.getElementById('id_lat').parentNode.style.display = 'none';
+    document.getElementById('id_lng').parentNode.style.display = 'none';
 });
 
 function initMap() {
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 53.577626, lng: 23.105803},
-  zoom: 4
+  zoom: 2
 });
 
     if (navigator.geolocation) {
@@ -23,18 +24,24 @@ var map = new google.maps.Map(document.getElementById('map'), {
       handleLocationError(false, infoWindow, map.getCenter());
     }
 
-map.addListener('rightclick', function(e) {
-    placeMarkerAndPanTo(e.latLng, map);
-  });
-
+var marker;
 
 function placeMarkerAndPanTo(latLng, map) {
-  var marker = new google.maps.Marker({
-    position: latLng,
-    map: map,
-  });
-  map.panTo(latLng);
-  var showPosition = document.querySelector("#id_location");
-    id_location.value = '{lat: ' + latLng.lat() + ', lng: ' + latLng.lng() + '}'
+  if ( marker ) {
+    marker.setPosition(latLng);
+  } else {
+    marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      draggable: true,
+    });
+    map.panTo(latLng);
+    id_lat.value = latLng.lat();
+    id_lng.value = latLng.lng();
+  }
 }
+
+map.addListener('rightclick', function(e) {
+    placeMarkerAndPanTo(e.latLng, map);
+});
 }
