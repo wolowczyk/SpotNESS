@@ -7,6 +7,7 @@ from django.contrib.auth import login, logout
 from point.models import Point
 from user.models import SpotUser
 from .forms import UserLoginForm, UserCreateForm
+from random import choice
 
 
 class UserLoginView(View):
@@ -43,13 +44,16 @@ class SpotNESSView(View):
     def get(self, request):
         point_list = Point.objects.all()
         spots_list = []
+        ids_list = []
         for point in point_list:
             url = "/point/" + str(point.id)
             spots_list.append([point.name, point.lat, point.lng, url])
+            ids_list.append(point.id)
 
         ctx = {
             'point_list': point_list,
-            'spots_list': spots_list
+            'spots_list': spots_list,
+            'random_id': choice(ids_list)
         }
         return render(request, 'user/spotness.html', ctx)
 

@@ -21,6 +21,12 @@ class UserLoginForm(forms.Form):
 
 
 class UserCreateForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(UserCreateForm, self).__init__(*args, **kwargs)
+
+        for fieldname in ['username', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
+
     class Meta:
         model = SpotUser
         fields = ["username", "password1", "password2", "email", "first_name", "last_name", "localization"]

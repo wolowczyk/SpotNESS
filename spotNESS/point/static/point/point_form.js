@@ -17,11 +17,7 @@ var map = new google.maps.Map(document.getElementById('map'), {
         };
         map.setCenter(pos);
         map.setZoom(11);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
       });
-    } else {
-      handleLocationError(false, infoWindow, map.getCenter());
     }
 
 var marker;
