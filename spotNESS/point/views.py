@@ -6,12 +6,13 @@ from .models import Point
 from django.shortcuts import render, redirect
 from django.views import View
 from point.forms import PointAddForm
+from tag.models import Tag
 
 
 class PointDetailView(LoginRequiredMixin, View):
     def get(self, request, id):
         point = Point.objects.get(id=id)
-        # form = CommentForm(initial={'photo': id})
+        # form = CommentForm(initial={'point': id})
         return render(request, 'point/point.html', {'point': point})
 
 

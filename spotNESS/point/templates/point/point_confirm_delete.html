@@ -1,8 +1,9 @@
 {% extends 'user/base.html' %}
 
 {% block content %}
-    You would like to delete {{ point }}:
+<div class="jumbotron">
+    You would like to delete {{ point.name }}:
     <form action="" method="POST">{% csrf_token %}
-        <button type="submit">DELETE</button>
-    </form>
+        <button class="btn btn-info" type="submit">DELETE</button>
+    </form></div>
 {% endblock %}

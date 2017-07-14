@@ -63,3 +63,4 @@ class UserView(LoginRequiredMixin, View):
         user = SpotUser.objects.get(id=id)
         point_list = Point.objects.filter(user=user)
         return render(request, 'user/user_detail.html', {'user': user, 'point_list': point_list})
+

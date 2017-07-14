@@ -3,6 +3,13 @@
     width: 100%;
 }
 
+#map-detail {
+    height: 500px;
+    width: 50%;
+    position: absolute;
+    right: 0px;
+}
+
 .sticky {
   position: fixed;
   width: 100%;
@@ -35,4 +42,11 @@
 
 .submit{
     border: 1px solid white;
+}
+
+.form_point {
+    background-color: grey;
+    width: 50%;
+    padding: 10px;
+    text-align: centre;
 }

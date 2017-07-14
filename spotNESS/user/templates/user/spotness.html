@@ -5,10 +5,9 @@
 <script>
 function initMap() {
 var map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 43.577626, lng: 13.105803},
-  zoom: 3
+  center: {lat: 0, lng: 0},
+  zoom: 2
 });
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = {
@@ -38,12 +37,11 @@ var marker = new google.maps.Marker({
 }
 </script>
 {% if request.user.is_authenticated %}
-    <div class="instruction center_div"><h3><i>Feel free to explore the world. Turn on geolocation to find some recommendations nearby you.</i></h3></div>
+    <div class="instruction"><h3><i>Feel free to explore the world. Turn on geolocation to find some recommendations nearby you.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</i><a href="/point/{{ random_id }}">
+    <img src="/media/media/random.jpg" width=10% height=10%>
+</a></h3></div>
     <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
     </script></div><br />
-<a href="/point/{{ random_id }}">
-    <img src="/media/media/random.jpg" class="img-responsive center-block" width=20% height=20%>
-</a>
 {% else %}
 <div class="jumbotron">
 <a href="/registration/">

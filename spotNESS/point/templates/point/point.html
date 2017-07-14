@@ -8,7 +8,7 @@ var pos = {
           lat: {{ point.lat }},
           lng: {{ point.lng }}
         };
-var map = new google.maps.Map(document.getElementById('map'), {
+var map = new google.maps.Map(document.getElementById('map-detail'), {
   center: pos,
   zoom: 15
 });
@@ -18,11 +18,23 @@ var marker = new google.maps.Marker({
 });
 }
 </script>
-<h1>{{ point.name }}</h1>
-<div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
+<div id="map-detail"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
     </script></div>
-<img src="/media/{{ point.photo }}"><br />
-<strong>{{ point.user.username }}</strong> ~ {{ point.description }}<br />{{ point.location }}<br />
+<div class="instruction">
+<img src="/media/{{ point.photo }}" width="300px"><br />
+<h1>{{ point.name }}</h1>
+<i>{{ point.description }}</i><br/>
+<strong>Type: </strong>{{ point.type.name }}<br />
+<strong>Tags: </strong>{{ point.tags }}<br />
+Added by
+    {% if point.user.username == user.username %}
+    YOU
+    {% else %}
+    {{ point.user.username }}
+    {% endif %}
+</div>
+{% if request.user.id == point.user.id %}
 <a href="{{ point.get_delete_url }}">DELETE</a>
+{% endif %}
 
 {% endblock %}

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function initMap() {
-var map = new google.maps.Map(document.getElementById('map'), {
+var map = new google.maps.Map(document.getElementById('map-detail'), {
   center: {lat: 53.577626, lng: 23.105803},
   zoom: 2
 });
