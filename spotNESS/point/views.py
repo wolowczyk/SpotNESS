@@ -12,8 +12,12 @@ from tag.models import Tag
 class PointDetailView(LoginRequiredMixin, View):
     def get(self, request, id):
         point = Point.objects.get(id=id)
+        tag_query_list = point.tags.all()
+        tags = []
+        for tag in tag_query_list:
+            tags.append(tag.content)
         # form = CommentForm(initial={'point': id})
-        return render(request, 'point/point.html', {'point': point})
+        return render(request, 'point/point.html', {'point': point, 'tags': tags})
 
 
 class PointAddView(LoginRequiredMixin, View):

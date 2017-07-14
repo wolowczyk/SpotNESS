@@ -25,12 +25,15 @@ var marker = new google.maps.Marker({
 <h1>{{ point.name }}</h1>
 <i>{{ point.description }}</i><br/>
 <strong>Type: </strong>{{ point.type.name }}<br />
-<strong>Tags: </strong>{{ point.tags }}<br />
+    {% for name in tags %}
+    <span class="label label-info">{{ name }}</span>
+    {% endfor %}
+    <br />
 Added by
     {% if point.user.username == user.username %}
-    YOU
+    <a href="/user/{{ request.user.id }}">YOU</a>
     {% else %}
-    {{ point.user.username }}
+    <a href="/user/{{ point.user.id }}">{{ point.user.username }}</a>
     {% endif %}
 </div>
 {% if request.user.id == point.user.id %}

@@ -62,5 +62,11 @@ class UserView(LoginRequiredMixin, View):
     def get(self, request, id):
         user = SpotUser.objects.get(id=id)
         point_list = Point.objects.filter(user=user)
-        return render(request, 'user/user_detail.html', {'user': user, 'point_list': point_list})
+        spots_list = []
+        ids_list = []
+        for point in point_list:
+            url = "/point/" + str(point.id)
+            spots_list.append([point.name, point.lat, point.lng, url])
+            ids_list.append(point.id)
+        return render(request, 'user/user_detail.html', {'user': user, 'spots_list': spots_list})
 

@@ -1,9 +1,4 @@
-{% extends 'user/base.html' %}
-{% load static %}
-
-{% block content %}
-<script>
-    function initMap() {
+function initMap() {
 var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 0, lng: 0},
   zoom: 2
@@ -35,10 +30,3 @@ var marker = new google.maps.Marker({
 
   }
 }
-</script>
-<!--<script src='{% static "/user/user.js" %}'></script>-->
-    <div class="instruction center_div"><h3><i>There are spots of {{ user.username }}</i></h3></div>
-    <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
-    </script></div>
-
-{% endblock %}
