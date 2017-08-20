@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from .local_settings import DATABASES, SECRET_KEY, googlemap_key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jq-0wq*o=qv42p)%xmx2z5x%posu^=u(de8$lc^#i1dhl3(tv8'
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,16 +79,6 @@ WSGI_APPLICATION = 'spotNESS.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'NAME': 'spotness_db',
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'sevek',
-        'PASSWORD': 'qwertyuiop',
-        'HOST': 'localhost',
-    }
-}
 
 
 # Password validation

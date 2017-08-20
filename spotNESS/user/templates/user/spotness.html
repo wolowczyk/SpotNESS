@@ -1,3 +1,5 @@
+from local_settings import googlemap_key
+
 {% extends 'user/base.html' %}
 {% load static %}
 
@@ -40,7 +42,7 @@ var marker = new google.maps.Marker({
     <div class="instruction"><h3><i>Feel free to explore the world. Turn on geolocation to find some recommendations nearby you.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</i><a href="/point/{{ random_id }}">
     <img src="/media/media/random.jpg" width=10% height=10%>
 </a></h3></div>
-    <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
+    <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key={{ googlemap_key }}&callback=initMap">
     </script></div><br />
 {% else %}
 <div class="jumbotron">
