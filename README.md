@@ -1,2 +1,4 @@
 # SpotNESS
-A map of recomendations and stories
+Idea about this project came to my head a few years ago. During my travels I'm always looking for some alternative places full of locals, art, hidden for tourists treasures. Many times I was asking locals or my friends who have been there before for some recommendations. Except of asking friends, just hanging around or getting lost, every time I was exploring google, tons of forums, local facebook pages to find some interesting places for me and my friends to visit. Not even once I had to use phone or computer in internet cafe to do it. Apparently every time I have found some amazing spots, however it was taking me an hour or two... And right now imagine: what if you could just open a map full of recommendations?
+
+spotNESS has been started as a Python/Django web application, using a Postgresql as database and with front-end based on javascript and bootstrap . But this project is just a beggining, belive me ;)
