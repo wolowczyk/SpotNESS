@@ -19,4 +19,3 @@ var marker = new google.maps.Marker({
 });
 };
 });
-
