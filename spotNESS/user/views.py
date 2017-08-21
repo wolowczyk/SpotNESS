@@ -53,7 +53,7 @@ class SpotNESSView(View):
         ctx = {
             'point_list': point_list,
             'spots_list': spots_list,
-            'random_id': choice(ids_list)
+            'random_id': choice(ids_list),
         }
         return render(request, 'user/spotness.html', ctx)
 

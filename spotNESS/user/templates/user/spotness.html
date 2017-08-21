@@ -1,47 +1,15 @@
-from local_settings import googlemap_key
-
 {% extends 'user/base.html' %}
 {% load static %}
 
 {% block content %}
-<script>
-function initMap() {
-var map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 0, lng: 0},
-  zoom: 2
-});
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        map.setCenter(pos);
-        map.setZoom(11);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-var spots = {{ spots_list | safe }};
-
-for ( i = 0; i < spots.length; i++ ) {
-var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(spots[i][1], spots[i][2]),
-    map: map,
-    url: spots[i][3],
-  });
-  google.maps.event.addListener(marker, 'click', function() {
-    window.location.href = this.url;
-});
-  }
-}
-</script>
+<script src="/static/user/spotness.js"></script>
 {% if request.user.is_authenticated %}
     <div class="instruction"><h3><i>Feel free to explore the world. Turn on geolocation to find some recommendations nearby you.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</i><a href="/point/{{ random_id }}">
     <img src="/media/media/random.jpg" width=10% height=10%>
-</a></h3></div>
+</a></h3>
+        <br><ol id="spots_list">{% for spot_name, spot_lat, spot_lng, spot_url in spots_list %}
+            <li class="spot_spot"><p class="spot_name">{{ spot_name }}</p><p class="spot_lat">{{ spot_lat }}</p><p class="spot_lng">{{ spot_lng }}</p><p class="spot_url">{{ spot_url }}</p></ul></li>
+        {% endfor %}</ol></div>
     <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key={{ googlemap_key }}&callback=initMap">
     </script></div><br />
 {% else %}
