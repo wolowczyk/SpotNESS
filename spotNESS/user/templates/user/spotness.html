@@ -10,7 +10,7 @@
         <br><ol id="spots_list">{% for spot_name, spot_lat, spot_lng, spot_url in spots_list %}
             <li class="spot_spot"><p class="spot_name">{{ spot_name }}</p><p class="spot_lat">{{ spot_lat }}</p><p class="spot_lng">{{ spot_lng }}</p><p class="spot_url">{{ spot_url }}</p></ul></li>
         {% endfor %}</ol></div>
-    <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key={{ googlemap_key }}&callback=initMap">
+    <div id="map"><script src="https://maps.googleapis.com/maps/api/js?key={{ googlemaps_key }}&callback=initMap">
     </script></div><br />
 {% else %}
 <div class="jumbotron">

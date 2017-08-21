@@ -1,14 +1,22 @@
-function initMap() {
+document.addEventListener("DOMContentLoaded", function(event) {
+lat = document.querySelector('#point_lat');
+lng = document.querySelector('#point_lng');
+lat.style.display = "none";
+lng.style.display = "none";
+
+initMap = function() {
 var pos = {
-          lat: {{ point.lat }},
-          lng: {{ point.lng }}
+          lat: parseFloat(lat.innerHTML),
+          lng: parseFloat(lng.innerHTML),
         };
-var map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 52.26916667, lng: 20.90722222},
-  zoom: 4
+var map = new google.maps.Map(document.getElementById('map-detail'), {
+  center: pos,
+  zoom: 15
 });
 var marker = new google.maps.Marker({
-  position: {lat: 52.26916667, lng: 20.90722222},
+  position: pos,
   map: map
 });
-}
+};
+});
+

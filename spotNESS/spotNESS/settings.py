@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from .local_settings import DATABASES, SECRET_KEY, googlemap_key
+from .local_settings import DATABASES, SECRET_KEY, googlemaps_key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -2,27 +2,14 @@
 {% load static %}
 
 {% block content %}
-<script>
-    function initMap() {
-var pos = {
-          lat: {{ point.lat }},
-          lng: {{ point.lng }}
-        };
-var map = new google.maps.Map(document.getElementById('map-detail'), {
-  center: pos,
-  zoom: 15
-});
-var marker = new google.maps.Marker({
-  position: pos,
-  map: map
-});
-}
-</script>
-<div id="map-detail"><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6eGGBJC4jj6M2HsMej1kTKgnB3Sd5k48&callback=initMap">
+<script src="/static/point/point.js"></script>
+<div id="map-detail"><script async defer src="https://maps.googleapis.com/maps/api/js?key={{ googlemaps_key }}&callback=initMap">
     </script></div>
 <div class="instruction">
 <img src="/media/{{ point.photo }}" width="300px"><br />
 <h1>{{ point.name }}</h1>
+    <p id="point_lat">{{ point.lat }}</p>
+    <p id="point_lng">{{ point.lng }}</p>
 <i>{{ point.description }}</i><br/>
 <strong>Type: </strong>{{ point.type.name }}<br />
     {% for name in tags %}
